@@ -1,0 +1,287 @@
+@import './normalize';
+
+$component-height: 36px;
+$spacing-main: 16px;
+$topnav-height: 35px;
+
+@import './colors';
+@import './font';
+@import './layout';
+
+@import './components/shared';
+@import './components/form';
+@import './components/modal';
+@import './components/topnav';
+@import './components/hero';
+@import './components/datagrid';
+@import './components/texteditor';
+@import './components/datepicker';
+@import './components/schedule';
+@import './components/drawingcanvas';
+
+* {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  // color: inherit;
+  text-decoration: none;
+}
+
+body,
+html,
+#app {
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.app-body {
+  width: 100%;
+  position: absolute;
+  top: $topnav-height;
+  bottom: 0;
+
+}
+
+.app-container {
+  height: 100%;
+  min-width: 800px;
+  width: 100%;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-white {
+  color: $white;
+}
+
+.hide {
+  display: none;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.text-link {
+  color: $red-1;
+  cursor: pointer;
+}
+
+.width-container {
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  min-width: 800px;
+}
+
+.page-container {
+  height: 100%;
+  width: 100%;
+}
+
+.page-header {
+  padding: $spacing-main / 2 0;
+}
+
+.add-margin {
+  margin: $spacing-main;
+
+  &-side {
+    margin: 0 $spacing-main;
+  }
+
+  &-left {
+    margin-left: $spacing-main;
+  }
+
+  &-right {
+    margin-right: $spacing-main;
+  }
+
+  &-top {
+    margin-top: $spacing-main;
+  }
+
+  &-bottom {
+    margin-bottom: $spacing-main;
+  }
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.add-padding {
+  padding: $spacing-main;
+
+  &-side {
+    padding: 0 $spacing-main;
+  }
+
+  &-left {
+    padding-left: $spacing-main;
+  }
+
+  &-right {
+    padding-right: $spacing-main;
+  }
+
+  &-top {
+    padding-top: $spacing-main;
+  }
+
+  &-bottom {
+    padding-bottom: $spacing-main;
+  }
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.background-color {
+  &-blue {
+    background-color: $blue-4;
+    border-color: $blue-4;
+
+    &:hover {
+      background-color: $blue-5;
+      border-color: $blue-5;
+    }
+  }
+
+  &-teal {
+    background-color: $teal-1;
+    border-color: $teal-1;
+
+    &:hover {
+      background-color: $teal-2;
+      border-color: $teal-2;
+    }
+  }
+
+  &-red {
+    background-color: $red-1;
+    border-color: $red-1;
+
+    &:hover {
+      background-color: $red-2;
+      border-color: $red-2;
+    }
+  }
+
+  &-yellow {
+    background-color: $yellow-1;
+    border-color: $yellow-1;
+
+    &:hover {
+      background-color: $yellow-2;
+      border-color: $yellow-2;
+    }
+  }
+
+  &-white {
+    background-color: $white;
+  }
+}
+
+.color {
+  &-blue {
+    color: $blue-4;
+
+    &:hover {
+      background-color: $white;
+      border-color: $blue-5;
+      color: $blue-5;
+    }
+  }
+
+  &-teal {
+    color: $teal-1;
+
+    &:hover {
+      background-color: $white;
+      border-color: $teal-2;
+      color: $teal-2;
+    }
+  }
+
+  &-red {
+    color: $red-1;
+
+    &:hover {
+      background-color: $white;
+      border-color: $red-2;
+      color: $red-2;
+    }
+  }
+
+  &-yellow {
+    color: $yellow-1;
+
+    &:hover {
+      background-color: $white;
+      border-color: $yellow-2;
+      color: $yellow-2;
+    }
+  }
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v18/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2');
+}
+
+.material-icons {
+  color: $gray-3;
+  direction: ltr;
+  display: inline-block;
+  font-family: 'Material Icons';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 1;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: $teal-1;
+}

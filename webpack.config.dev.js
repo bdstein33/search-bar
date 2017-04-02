@@ -2,7 +2,7 @@
 const webpack = require('webpack')
 const webpackTargetElectronRenderer = require('webpack-target-electron-renderer')
 const path = require('path')
-
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 // Load base config
 const baseConfig = require('./webpack.config.base')
 
@@ -12,7 +12,11 @@ const config = Object.create(baseConfig)
 // Set entry points
 config.entry = [
     'webpack-hot-middleware/client?path=http://localhost:4000/__webpack_hmr&reload=true',
-    path.join(__dirname, '/app/index.js')
+    // path.join(__dirname, '/src/client.js')
+    'eventsource-polyfill', // necessary for hot reloading with IE
+    'babel-polyfill',
+		'./src/client.js',
+		'./src/scss/main.scss'
 ]
 
 // Set output
@@ -28,6 +32,7 @@ config.eslint = {
 
 // Dev plugins
 config.plugins.push(
+   new ProgressBarPlugin(),
    new webpack.optimize.OccurenceOrderPlugin(),
    new webpack.HotModuleReplacementPlugin(),
    new webpack.NoErrorsPlugin()
@@ -35,6 +40,7 @@ config.plugins.push(
 
 // Specify Electron renderer
 config.target = webpackTargetElectronRenderer(config)
+
 
 // Export module
 module.exports = config

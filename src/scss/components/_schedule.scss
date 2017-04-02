@@ -1,0 +1,114 @@
+$left-column-width: 80px;
+$row-height: 40px;
+$timeslot-height: $row-height / 4;
+
+$event-blue-background: #BFD4F6;
+$event-blue-text: #546C92;
+
+.schedule {
+  border-left: 1px solid $gray-4;
+  border-top: 1px solid $gray-4;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+
+.schedule__header {
+  border-bottom: 1px solid $gray-4;
+  min-height: $row-height;
+  width: 100%;
+}
+
+.schedule__column-header {
+  background-color: $gray-5;
+  border-right: 1px solid $gray-4;
+  box-sizing: border-box;
+  height: $row-height;
+  padding: 6px 0;
+  width: 100%;
+
+  .schedule-header-label {
+    box-sizing: border-box;
+    color: $gray-3;
+    text-align: center;
+    user-select: none;
+    width: 100%;
+  }
+
+  &.left-column {
+    flex: 0 0 $left-column-width;
+  }
+}
+
+.schedule__body {
+  overflow: scroll;
+}
+
+.schedule__column {
+  border-right: 1px solid $gray-4;
+  flex: 1 1;
+  height: $row-height * 24;
+  overflow: hidden;
+
+}
+
+.schedule__left-column {
+  border-right: 1px solid $gray-4;
+  box-sizing: border-box;
+  height: $row-height * 24;
+  overflow: hidden;
+  width: $left-column-width;
+
+  .schedule__left-column-label {
+    color: $gray-3;
+    line-height: $row-height;
+  }
+}
+
+.schedule__time_slot {
+  box-sizing: border-box;
+  height: $timeslot-height;
+}
+
+.schedule__out_of_range {
+  background-color: $gray-4;
+}
+
+.schedule__event {
+  background-color: $event-blue-background;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  user-select: none;
+
+  .schedule__event-label {
+    color: $event-blue-text;
+    user-select: none;
+
+  }
+}
+
+.event-container {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+@for $i from 1 through 96 {
+  .schedule__event-height-#{$i} {
+    height: ($i * $timeslot-height);
+  }
+}
+
+.schedule__left-column-label-container {
+  box-sizing: border-box;
+  height: $row-height;
+  user-select: none;
+}
+
+.schedule__border-bottom {
+  border-bottom: 1px solid $gray-4;
+}
