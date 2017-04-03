@@ -21,7 +21,8 @@ const config = {
 			{
 				test: /\.scss$/,
 				// loaders: ['style', 'css?modules', 'postcss', 'sass']
-				loaders: ['style', 'css', 'postcss-loader', 'resolve-url', 'sass?sourceMap']
+				// loaders: ['style', 'css', 'postcss-loader', 'sass?sourceMap']
+				loaders: ['style-loader', 'css-loader', 'sass-loader']
 
 			},
 			{
@@ -52,9 +53,9 @@ const config = {
 	postcss: [
     autoprefixer({remove: false, browsers: ['> 1%', 'IE >= 10', 'Firefox >= 37', 'Safari >= 6', 'Android >= 4.0']})
   ],
-  sassLoader: {
-    includePaths: [path.resolve(__dirname, 'node_modules/support-for/sass')]
-  },
+  // sassLoader: {
+  //   includePaths: [path.resolve(__dirname, 'node_modules/support-for/sass')]
+  // },
 	plugins: []
 }
 

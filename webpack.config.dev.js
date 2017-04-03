@@ -12,7 +12,6 @@ const config = Object.create(baseConfig)
 // Set entry points
 config.entry = [
     'webpack-hot-middleware/client?path=http://localhost:4000/__webpack_hmr&reload=true',
-    // path.join(__dirname, '/src/client.js')
     'eventsource-polyfill', // necessary for hot reloading with IE
     'babel-polyfill',
 		'./src/client.js',

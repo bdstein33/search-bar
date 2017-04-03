@@ -8,8 +8,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='app-container'>
-        <C.TextInput name='hi'/>
+      <div>
+        GIIIII
+        <C.Text>
+          HELLO
+        </C.Text>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-@import './normalize';
+// @import './normalize';
 
 $component-height: 36px;
 $spacing-main: 16px;
@@ -7,17 +7,6 @@ $topnav-height: 35px;
 @import './colors';
 @import './font';
 @import './layout';
-
-@import './components/shared';
-@import './components/form';
-@import './components/modal';
-@import './components/topnav';
-@import './components/hero';
-@import './components/datagrid';
-@import './components/texteditor';
-@import './components/datepicker';
-@import './components/schedule';
-@import './components/drawingcanvas';
 
 * {
   font-family: 'Open Sans', sans-serif;
@@ -32,28 +21,6 @@ a:active {
   text-decoration: none;
 }
 
-body,
-html,
-#app {
-  height: 100%;
-  width: 100%;
-  max-height: 100%;
-  max-width: 100%;
-}
-
-.app-body {
-  width: 100%;
-  position: absolute;
-  top: $topnav-height;
-  bottom: 0;
-
-}
-
-.app-container {
-  height: 100%;
-  min-width: 800px;
-  width: 100%;
-}
 
 .bold {
   font-weight: 600;
