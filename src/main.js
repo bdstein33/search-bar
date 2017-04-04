@@ -4,6 +4,7 @@ import {
   BrowserWindow,
   globalShortcut,
   Menu,
+  shell,
   Tray
 } from 'electron';
 import menubar from 'menubar';
@@ -35,10 +36,22 @@ app.on('ready', function() {
 
   tray = new Tray(`${__dirname}/test.png`);
   const contextMenu = Menu.buildFromTemplate([
-    {label: 'Item1', type: 'radio'},
-    {label: 'Item2', type: 'radio'},
-    {label: 'Item3', type: 'radio', checked: true},
-    {label: 'Item4', type: 'radio'}
+    {
+      label: 'About',
+      click() {
+        mainWindow.hide();
+        shell.openExternal('https://google.com');
+      }
+    },
+    {
+      type: 'separator'
+    },
+    {
+      label: 'Quit',
+      click() {
+        app.quit();
+      }
+    }
   ]);
 
   tray.setToolTip('This is my application.')
@@ -64,17 +77,7 @@ app.on('ready', function() {
   });
 
   if (!shortcut) { console.log('Registration failed.'); }
-
-  mainWindow.on('close', (event) => {
-    event.preventDefault();
-    mainWindow.hide();
-  });
-
-  // Register window events
-  mainWindow.on('closed', function() {
-    mainWindow = null
-  })
-})
+});
 
 app.dock.hide();
 
