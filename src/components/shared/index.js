@@ -10,3 +10,4 @@ export Link from './Link';
 export Right from './Right';
 export TopNav from './TopNav';
 export Text from './Text';
+export SearchBar from './SearchBar';

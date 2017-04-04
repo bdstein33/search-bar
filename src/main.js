@@ -1,82 +1,15 @@
 
-import {app, BrowserWindow} from 'electron';
+import {
+  app,
+  BrowserWindow,
+  globalShortcut,
+  Menu,
+  Tray
+} from 'electron';
+import menubar from 'menubar';
 import path from 'path';
-// import url from 'url';
-// import webpack from 'webpack';
 
 
-// /******************************
-// WEBPACK AND HMR
-// ******************************/
-// if (process.env.NODE_ENV === 'development') {
-//   const webpackConfig = require('../webpack.dev.config.js');
-//   const compiler = webpack(webpackConfig);
-// }
-
-
-// // Keep a global reference of the window object.  If you don't, the
-// // window will close automatically when the JS object is garbage collected
-// let appWindow;
-
-// function createWindow() {
-//   // Create new browser window
-//   appWindow = new BrowserWindow({
-//     // alwaysOnTop: true, // Always show on top of other windows
-//     transparent: true,
-//     frame: false,
-//     toolbar: false
-//   });
-
-//   // Load index.html into app
-//   appWindow.loadURL(url.format({
-//     pathname: path.join(__dirname, 'src/index.html'),
-//     protocol: 'file',
-//     slashes: true
-//   }));
-
-//   // Emitted when window is closed
-//   appWindow.on('closed', () => {
-//     appWindow = null;
-//   });
-// }
-
-// // This method will be called when Electron has finished
-// // initialization and is ready to create browser windows.
-// // Some APIs can only be used after this event occurs.
-// app.on('ready', () => {
-//   console.log('AAAAA')
-//   createWindow()
-// });
-
-// // Quit when all windows are closed.
-// app.on('window-all-closed', () => {
-//   // On macOS it is common for applications and their menu bar
-//   // to stay active until the user quits explicitly with Cmd + Q
-//   if (process.platform !== 'darwin') {
-//     app.quit()
-//   }
-// });
-
-// app.on('activate', () => {
-//   // On macOS it's common to re-create a window in the app when the
-//   // dock icon is clicked and there are no other windows open.
-//   if (appWindow === null) {
-//     createWindow()
-//   }
-// });
-
-
-// export default app;
-
-
-// Import modules
-// const electron = require('electron')
-
-// const app = electron.app
-// const BrowserWindow = electron.BrowserWindow
-
-// Load environmental variables
-// require('dotenv').load()
 
 if (process.env.NODE_ENV === "development") {
   let hotReloadServer = require('hot-reload-server')
@@ -87,25 +20,62 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // Create a variable to hold the window
-let mainWindow = null
+let mainWindow = null;
+let tray = null
 
 app.on('ready', function() {
-
   // creates a new browser window
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    // transparent: true,
-    // frame: false,
-    // toolbar: false
-
+    alwaysOnTop: true,
+    hasShadow: true,
+    transparent: true,
+    frame: false,
+    toolbar: false
   })
+
+  tray = new Tray(`${__dirname}/test.png`);
+  const contextMenu = Menu.buildFromTemplate([
+    {label: 'Item1', type: 'radio'},
+    {label: 'Item2', type: 'radio'},
+    {label: 'Item3', type: 'radio', checked: true},
+    {label: 'Item4', type: 'radio'}
+  ]);
+
+  tray.setToolTip('This is my application.')
+  tray.setContextMenu(contextMenu)
+
+
   // load the file
+  mainWindow.maximize();
   mainWindow.loadURL('file://' + __dirname + '/index.html')
+
+
+  const shortcut = globalShortcut.register('Control+Space', () => {
+    if (mainWindow.isVisible()) {
+      mainWindow.hide();
+    } else {
+      mainWindow.show();
+      mainWindow.webContents.on('dom-ready', () => {
+        mainWindow.webContents.executeJavaScript(`
+          console.log('THIS IS WORKING');
+        `);
+      });
+    }
+  });
+
+  if (!shortcut) { console.log('Registration failed.'); }
+
+  mainWindow.on('close', (event) => {
+    event.preventDefault();
+    mainWindow.hide();
+  });
+
   // Register window events
   mainWindow.on('closed', function() {
     mainWindow = null
   })
 })
+
+app.dock.hide();
 
 export default app;

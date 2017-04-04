@@ -48,7 +48,7 @@
     "hot-reload-server": "0.0.4",
     "html-loader": "^0.4.0",
     "json-loader": "^0.5.4",
-    "node-sass": "^3.4.2",
+    "node-sass": "^3.8.0",
     "postcss": "^5.0.13",
     "postcss-loader": "^0.8.0",
     "progress-bar-webpack-plugin": "^1.9.3",

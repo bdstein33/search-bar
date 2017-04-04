@@ -15,7 +15,8 @@ config.entry = [
     'eventsource-polyfill', // necessary for hot reloading with IE
     'babel-polyfill',
 		'./src/client.js',
-		'./src/scss/main.scss'
+    './src/style.css'
+		// './src/scss/main.scss'
 ]
 
 // Set output
