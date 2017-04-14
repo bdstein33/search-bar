@@ -25,7 +25,7 @@ let tray = null
 app.on('ready', function() {
   // creates a new browser window
   mainWindow = new BrowserWindow({
-    // alwaysOnTop: true,
+    alwaysOnTop: true,
     hasShadow: true,
     transparent: true,
     frame: false,
@@ -68,7 +68,7 @@ app.on('ready', function() {
       mainWindow.show();
       mainWindow.webContents.on('dom-ready', () => {
         mainWindow.webContents.executeJavaScript(`
-          console.log('THIS IS WORKING');
+          document.getElementById("search-bar-input").focus()
         `);
       });
     }

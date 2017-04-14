@@ -1,25 +1,52 @@
 import React from 'react';
+import storeConnect from './addons/storeConnect';
+import {searchActions} from '../actions'
+import {remote, shell} from 'electron';
+import {autobind} from 'core-decorators';
 import * as C from './shared'
-import {remote} from 'electron';
+import SearchBar from './SearchBar'
+const win = remote.getCurrentWindow();
 
 
 class App extends React.Component {
   static propTypes = {
-    children: React.PropTypes.node
+    children: React.PropTypes.node,
+    actions: React.PropTypes.object,
+    search: React.PropTypes.object
   };
 
   componentDidMount() {
     document.body.addEventListener('keydown', event => {
-      if (event.key === 'Escape') {
-        const win = remote.getCurrentWindow();
-        win.hide();
+
+      switch (event.key) {
+        case 'Escape':
+          win.hide();
+          break;
+        case 'ArrowUp':
+          this.props.actions.updateActiveTab({move: -1})
+          break;
+        case 'ArrowDown':
+          this.props.actions.updateActiveTab({move: 1})
+          break;
+        case 'Enter':
+          this.navigateToActiveTab(win);
+          break;
+        default:
+          break;
       }
     });
   }
   closeWindow(e) {
     if (e.target.className.indexOf('app-container') !== -1) {
-      const win = remote.getCurrentWindow();
-      // win.close();
+      win.hide();
+    }
+  }
+
+  @autobind
+  navigateToActiveTab(win) {
+    const {activeTab, results} = this.props.search;
+    if (results.length > 0) {
+      shell.openExternal(results[activeTab].url);
       win.hide();
     }
   }
@@ -28,12 +55,10 @@ class App extends React.Component {
   render() {
     return (
       <div className='centered-content app-container' onClick={this.closeWindow}>
-        <div className='search-container'>
-          <C.SearchBar/>
-        </div>
+        <SearchBar/>
       </div>
     );
   }
 }
 
-export default App;
+export default storeConnect(['search'], searchActions)(App);

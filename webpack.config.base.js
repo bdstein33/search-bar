@@ -10,7 +10,7 @@ const config = {
     'eventsource-polyfill', // necessary for hot reloading with IE
     'babel-polyfill',
 		'./src/client.js',
-		'./src/scss/main.scss',
+		// './src/scss/main.scss',
 		'.src/style.css'
 	],
 	output: {
@@ -19,10 +19,10 @@ const config = {
 	},
 	module: {
 		loaders: [
-      {
-        test: /\.scss$/,
-        loaders: ['style', 'css', 'postcss-loader', 'resolve-url', 'sass?sourceMap']
-      },
+      // {
+      //   test: /\.scss$/,
+      //   loaders: ['style', 'css', 'postcss-loader', 'resolve-url', 'sass?sourceMap']
+      // },
 			{
         test: /\.css$/,
         loaders: [ 'style-loader', 'css-loader' ]
@@ -59,9 +59,9 @@ const config = {
 	// postcss: [
   //   autoprefixer({remove: false, browsers: ['> 1%', 'IE >= 10', 'Firefox >= 37', 'Safari >= 6', 'Android >= 4.0']})
   // ],
-  sassLoader: {
-    includePaths: [path.resolve(__dirname, 'node_modules/support-for/sass')]
-  },
+  // sassLoader: {
+  //   includePaths: [path.resolve(__dirname, 'node_modules/support-for/sass')]
+  // },
 	plugins: []
 }
 

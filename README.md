@@ -1,16 +1,11 @@
-# Electron Webpack Boilerplate
+# To Do
 
-Fully-loaded Electron boilerplate
-
-- [Electron](https://github.com/atom/electron)
-- [webpack](https://github.com/webpack/webpack)
-- [React](https://github.com/facebook/react)
-- [Hot Loader Server](https://github.com/vutran/hot-reload-server)
-- [Babel/ES2015](https://github.com/babel/babel)
-- [CSS Modules](https://github.com/css-modules/css-modules)
-- [Sass](https://github.com/sass/sass)
-- [PostCSS](https://github.com/postcss/postcss), [Autoprefixer](https://github.com/postcss/autoprefixer)
-- [dotenv](https://github.com/motdotla/dotenv)
+- CTRL + Spacebar should only open the app (not close it)
+- Add new functionality to mousedown event listener for CTRL + Spacebar
+- Clear input contents whenever app hides
+- Begin thinking more about how to structure localDb, querying actual data / persisting data
+- Dig into making authenticated requests to Github
+- Begin thinking more about other types (pull requests, branches, etc)
 
 ## Quickstart Guide
 

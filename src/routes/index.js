@@ -7,12 +7,9 @@ import Index from '../components/pages/Index';
 import userActions from '../actions/user';
 
 // Routes
-import reference from './reference';
-import test from './test';
-
+// import reference from './reference';
 const routes = {
-  reference,
-  test
+  // reference,
 };
 
 export default store => {

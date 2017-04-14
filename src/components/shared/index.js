@@ -7,5 +7,3 @@ export Icon from './Icon';
 export Link from './Link';
 export Right from './Right';
 export Text from './Text';
-export SearchBar from './SearchBar';
-export SearchTab from './SearchTab';
