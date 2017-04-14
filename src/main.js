@@ -10,8 +10,6 @@ import {
 import menubar from 'menubar';
 import path from 'path';
 
-
-
 if (process.env.NODE_ENV === "development") {
   let hotReloadServer = require('hot-reload-server')
   let webpackConfig = require('../webpack.config.dev')
@@ -27,7 +25,7 @@ let tray = null
 app.on('ready', function() {
   // creates a new browser window
   mainWindow = new BrowserWindow({
-    alwaysOnTop: true,
+    // alwaysOnTop: true,
     hasShadow: true,
     transparent: true,
     frame: false,

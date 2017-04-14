@@ -10,10 +10,8 @@ class App extends React.Component {
 
   componentDidMount() {
     document.body.addEventListener('keydown', event => {
-      console.log(event.key)
       if (event.key === 'Escape') {
         const win = remote.getCurrentWindow();
-        // win.close();
         win.hide();
       }
     });

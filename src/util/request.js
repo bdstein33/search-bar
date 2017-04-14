@@ -3,9 +3,7 @@ import axios from 'axios';
 export default (endpoint, data = {}) => {
   const requestObj = {
     method: endpoint.method,
-    url: endpoint.url.indexOf('http') !== -1
-          ? endpoint.url
-          : `${process.env.API_HOST}/api/${endpoint.url}`
+    url: endpoint.url
   };
 
   if (endpoint.headers) {
@@ -17,6 +15,8 @@ export default (endpoint, data = {}) => {
   } else {
     requestObj.data = data;
   }
+
+  console.log('requestObj', requestObj)
 
   return axios(requestObj)
     .then(result => {

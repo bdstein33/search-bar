@@ -17,6 +17,7 @@ export default (name, data, options = {}) => {
     dispatch({type: `${name}__START`});
     return request.call(this, options.request, data)
       .then(result => {
+        console.log(result)
         if (result.error) {
           dispatch({type: `${name}__ERROR`, error: result.error});
           if (options.error) {
